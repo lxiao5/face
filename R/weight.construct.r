@@ -62,7 +62,7 @@ weight.construct <- function(fit,data,include.diag=TRUE){
 
 #scale W 
 temp <- sapply(W,max)
-W <- sapply(W,function(x) x/mean(temp,na.rm=TRUE))
+W <- lapply(W,function(x) x/mean(temp,na.rm=TRUE))
 
 return(W)
 }
