@@ -130,13 +130,14 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   c2 <- c2 + 1
   g <- rep(0, c2)
   G1 <- matrix(0,c2,c2)
-  c3 <- min(c2,50)
-  G3 <- matrix(0,c3^2,c3) 
-   
+  #c3 <- min(c2,50)
+  #G3 <- matrix(0,c3^2,c3) 
+  mat_list <- list()
+    
   for(i in 1:n0){
     seq = (sum(N2[1:i])-N2[i]+1):(sum(N2[1:i]))
     Ai = matrix(A[seq,],nrow=length(seq))
-    AitAi = t(Ai)%*%Ai
+    AitAi = crossprod(Ai) #t(Ai)%*%Ai
     Wi = W[[i]]
     
     fi = crossprod(Ai,C[seq]) # t(Fi)Ci
@@ -144,8 +145,11 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
     Li = crossprod(Ai,Wi%*%Ai)
     g = g + Ji*fi
     G1 = G1 + AitAi*(Ji%*%t(ftilde))
-    G3 = G3 + kr(as.matrix(Li[(c2-c3+1):c2,(c2-c3+1):c2]), 
-                 AitAi[(c2-c3+1):c2,(c2-c3+1):c2],byrow=FALSE)#/N2[i]
+  
+    LList <- list()
+    LList[[1]] = AitAi
+    LList[[2]] = Li
+    mat_list[[i]] = LList
     
    }
   
@@ -160,9 +164,11 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
     cv1 <-  sum(ftilde_d*(AtA%*%ftilde_d))
     cv2 <-  2*sum(d*g)
     cv3 <-  -4*sum(d*(G1%*%d))
-    ftilde_d_short <- ftilde_d[(c2-c3+1):c2]
-    cv4 <-  2*sum(crossprod(G3,as.vector(ftilde_d_short%*%t(ftilde_d_short)))*d[(c2-c3+1):c2])
-    
+    cv4 <- sum(unlist(sapply(mat_list,function(x){
+      a <- x[[1]]%*%ftilde_d
+      b <- x[[2]]%*%ftilde_d
+      2*sum(a*b*d)
+    })))
     cv <- cv0 + cv1 + cv2 + cv3 + cv4
     return(cv)
   }
