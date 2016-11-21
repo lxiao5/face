@@ -3,7 +3,7 @@ face.sparse <- function(data, newdata = NULL,
                             knots=10, knots.option="quantile",
                             p=3,m=2,lambda=NULL,lambda_mean=NULL,
                             search.length=14,
-                            lower=-3,upper=10, lower2 = -1, upper2=5,
+                            lower=-3,upper=10, lower2 = -3, upper2=5,
                             calculate.scores=FALSE,pve=0.99){
 
   
