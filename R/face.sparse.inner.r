@@ -130,8 +130,6 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   c2 <- c2 + 1
   g <- rep(0, c2)
   G1 <- matrix(0,c2,c2)
-  #c3 <- min(c2,50)
-  #G3 <- matrix(0,c3^2,c3) 
   mat_list <- list()
     
   for(i in 1:n0){
@@ -189,7 +187,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   
   Eigen <- eigen(Theta,symmetric=TRUE)
   Eigen$values[Eigen$values<0] <- 0
-  npc <- which.max(cumsum(Eigen$values)/sum(Eigen$values)>pve)[1]
+  npc <- sum(Eigen$values>0) #which.max(cumsum(Eigen$values)/sum(Eigen$values)>pve)[1]
   if(npc >1){
     Theta <- matrix.multiply(Eigen$vectors[,1:npc],Eigen$values[1:npc])%*%t(Eigen$vectors[,1:npc])
     Theta_half <- matrix.multiply(Eigen$vectors[,1:npc],sqrt(Eigen$values[1:npc]))
@@ -208,6 +206,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   Chat.diag.new = as.vector(diag(Chat.new))  
   Cor.new = diag(1/sqrt(Chat.diag.new))%*%Chat.new%*%diag(1/sqrt(Chat.diag.new))
   Eigen.new = eigen(Chat.new,symmetric=TRUE)
+  npc = which.max(cumsum(Eigen$values)/sum(Eigen$values)>pve)[1] #determine number of PCs
   eigenfunctions = matrix(Eigen.new$vectors[,1:min(npc,length(tnew))],ncol=min(npc,length(tnew)))
   eigenvalues = Eigen.new$values[1:min(npc,length(tnew))]
   eigenfunctions = eigenfunctions*sqrt(length(tnew))/sqrt(max(tnew)-min(tnew))
@@ -302,9 +301,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
    
  }
 
- #B3 = spline.des(knots=knots, x=t, ord = p+1,outer.ok = TRUE,sparse=TRUE)$design
- #DIAG <- as.vector(r^2- apply(B3%*%Theta_half,1,function(x){sum(x^2)}))
- #sigma2_a <- mean(DIAG,trim=0.2)
+
  
   res <- list(newdata=newdata, W = W, y.pred = y.pred, Theta=Theta,argvals.new=tnew, 
               mu.new = mu.new, Chat.new=Chat.new, var.error.new = var.error.new,
