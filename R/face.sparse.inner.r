@@ -11,7 +11,6 @@
 # Note that: we only handle complete data, so missing values are not allowed at this moment
 
 ## "newdata" is of the same strucutre as "data". 
-## If NULL, then "newdata" will be the same as "data"
 ## To predict at new values of "argvals", make the corresponding "y" NA
 
 ### "center" means if we want to compute population mean
@@ -19,11 +18,11 @@
 ### "argvals.new" if we want the estimated covariance function at "argvals.new"; if NULL,
 ### then 100 equidistant points in the range of "argvals" in "data"
 
-### "knots" is the number of knots for B-spline basis functions to be used; 
+### "knots" is the number of interior knots for B-spline basis functions to be used; 
 
 face.sparse.inner <- function(data, newdata = NULL, W = NULL,
                             center=TRUE,argvals.new=NULL,
-                        knots=10, knots.option="quantile",
+                        knots=7, knots.option="quantile",
                         p=3,m=2,lambda=NULL,lambda_mean=NULL,
                         search.length=14,
                         lower=-3,upper=10, 
