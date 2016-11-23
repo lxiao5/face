@@ -1,6 +1,6 @@
 face.sparse <- function(data, newdata = NULL,
                             center=TRUE,argvals.new=NULL,
-                            knots=10, knots.option="quantile",
+                            knots=7, knots.option="quantile",
                             p=3,m=2,lambda=NULL,lambda_mean=NULL,
                             search.length=14,
                             lower=-3,upper=10, lower2 = -3, upper2=5,
