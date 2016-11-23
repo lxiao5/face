@@ -10,7 +10,7 @@ from a cluster of functions/longitudinal observations.}
 \usage{
 face.sparse(data, newdata = NULL,
              center = TRUE, argvals.new = NULL,
-             knots = 10, knots.option="quantile",
+             knots = 7, knots.option="quantile",
              p = 3, m = 2, lambda = NULL, lambda_mean = NULL,
              search.length = 14, 
              lower = -3, upper = 10, lower2 = -3, upper2 = 5,
@@ -39,7 +39,8 @@ and etc. If NULL,
 then 100 equidistant points in the range of \code{data$argvals}.
 }
   \item{knots}{
-a vector of interior knots or the number of knots for B-spline basis functions to be used; defaults to 10.
+a vector of interior knots or the number of knots for B-spline basis functions to be used; defaults to 7.
+    The resulting number of basis functions is the number of interior knots plus the degree of B-splines.
 }
 
 \item{knots.option}{
