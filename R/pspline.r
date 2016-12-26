@@ -1,5 +1,5 @@
 pspline <- function(data,argvals.new= NULL,knots=35,
-                        knots.option="quantile",
+                        knots.option="equally-spaced",
                         p=3,m=2,lambda=NULL,
                         search.length = 100,
                         lower=-20,upper=20){
@@ -37,13 +37,13 @@ pspline <- function(data,argvals.new= NULL,knots=35,
   knots <- construct.knots(t,knots,knots.option,p)
   
   
-  List <- pspline.setting(t,knots=knots,p.p,m.p,weight=W)
+  List <- pspline.setting(t,knots=knots,p.p,m.p,weight=W,knots.option=knots.option)
   AS <- as.matrix(List$A)
   s <- List$s
   Sigi.sqrt <- List$Sigi.sqrt
   U <- List$U
   B <- List$B
-  Bnew <- pspline.setting(tnew,knots=knots,p.p,m.p,weight=rep(1,length(tnew)),type="simple")$B
+  Bnew <- spline.des(knots=knots, x=tnew, ord = p.p+1,outer.ok = TRUE,sparse=TRUE)$design
     
   AStY <- as.vector(t(AS)%*%Y)
   AStWY <- as.vector(t(AS)%*%WY)
