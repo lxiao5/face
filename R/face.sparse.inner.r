@@ -21,12 +21,12 @@
 ### "knots" is the number of interior knots for B-spline basis functions to be used; 
 
 face.sparse.inner <- function(data, newdata = NULL, W = NULL,
-                            center=TRUE,argvals.new=NULL,
-                        knots=7, knots.option="quantile",
-                        p=3,m=2,lambda=NULL,lambda_mean=NULL,
-                        search.length=14,
-                        lower=-3,upper=10, 
-                        calculate.scores=FALSE,pve=0.99){
+                              center=TRUE,argvals.new=NULL,
+                              knots=7, knots.option="equally-spaced",
+                              p=3,m=2,lambda=NULL,lambda_mean=NULL,
+                              search.length=14,
+                              lower=-3,upper=10, 
+                              calculate.scores=FALSE,pve=0.99){
   
   #########################
   ####step 0: read in data
@@ -74,7 +74,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   #########################
   knots <- construct.knots(t,knots,knots.option,p)
   
-  List <- pspline.setting(st[,1],knots=knots,p,m,type="simple")
+  List <- pspline.setting(st[,1],knots=knots,p,m,type="simple",knots.option=knots.option)
   B1 <- List$B
   B1 <- Matrix(B1)
   DtD <- List$P
@@ -183,6 +183,10 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   Theta <- G %*% alpha[1:c2-1]
   Theta <- matrix(Theta,c,c)         # parameter estimated (sym)
   sigma2 <- alpha[c2]
+  if(sigma2 <= 0.000001) {                                               
+    warning("error variance cannot be non-positive, reset to 1e-6!")    
+    sigma2 <- 0.000001                                                  
+  }
   
   Eigen <- eigen(Theta,symmetric=TRUE)
   Eigen$values[Eigen$values<0] <- 0
@@ -215,8 +219,8 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   #########################
   ####step 5: calculate variance
   #########################
-  var.error.hat <- rep(max(sigma2,0.000001),length(t))
-  var.error.new <- rep(max(sigma2,0.000001),length(tnew))
+  var.error.hat <- rep(sigma2,length(t))
+  var.error.new <- rep(sigma2,length(tnew))
 
   
   
@@ -229,7 +233,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   if(!is.null(newdata)){
   
   mu.pred <- rep(0,length(newdata$argvals))
-  var.error.pred <- rep(max(sigma2,0.000001),length(newdata$argvals))
+  var.error.pred <- rep(sigma2,length(newdata$argvals))
   if(center){
     mu.pred <- predict.pspline(fit_mean,newdata$argvals)
   }
@@ -312,7 +316,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
               se.pred = se.pred,
               fit_mean = fit_mean, lambda_mean=fit_mean$lambda,
               lambda=lambda,Gcv=Gcv,Lambda=Lambda,knots=knots,knots.option=knots.option,s=s,npc=npc, p = p, m=m,
-              center=center,pve=pve,sigma2=sigma2, r = r)
+              center=center,pve=pve,sigma2=sigma2, r = r, DtD = DtD)
  
   class(res) <- "face.sparse"
   return(res)
