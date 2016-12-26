@@ -11,7 +11,7 @@ Imports:
     stats,
     splines,
     Matrix,
-    matrixcalc.
+    matrixcalc,
     mgcv
 License: GPL-3
 LazyLoad: yes
