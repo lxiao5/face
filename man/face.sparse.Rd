@@ -10,7 +10,7 @@ from a cluster of functions/longitudinal observations.}
 \usage{
 face.sparse(data, newdata = NULL,
              center = TRUE, argvals.new = NULL,
-             knots = 7, knots.option="quantile",
+             knots = 7, knots.option="equally-spaced",
              p = 3, m = 2, lambda = NULL, lambda_mean = NULL,
              search.length = 14, 
              lower = -3, upper = 10, lower2 = -3, upper2 = 5,
@@ -44,8 +44,9 @@ a vector of interior knots or the number of knots for B-spline basis functions t
 }
 
 \item{knots.option}{
-if \code{knots} specifies the number of knots, then \code{knots.option} will be used. Default "quantile": quantiles of the observed time points will be selected. Alternatively "equally-spaced", then
-equally-spaced knots in the range of observed time points will be selected.
+if \code{knots} specifies the number of knots, then \code{knots.option} will be used.  Default
+"equally-spaced", then equally-spaced knots in the range of observed time points will be selected; alternatively,
+"quantile": quantiles of the observed time points will be selected.
 }
 
 \item{p}{
