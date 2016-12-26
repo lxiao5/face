@@ -9,7 +9,7 @@ Construct knots from either quantiles of observed time points or
 equally-spaced time points.
 }
 \usage{
-select.knots(t,knots=10,p=3,option="quantile")
+select.knots(t,knots=10,p=3,option="equally-spaced")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,8 +18,8 @@ select.knots(t,knots=10,p=3,option="quantile")
 \item{knots}{ Number of interior knots.
 }
 \item{p}{Degrees of B-splines to be used.}
-\item{option}{Default "quantile":quantiles of \code{t}; if "equally-spaced", 
-then equally-spaced time points in the range of \code{t}.}
+\item{option}{Default "equally-spaced": equally-spaced time points in the range of \code{t}; if "quantile", 
+then quantiles of \code{t}.}
 }
 
 \details{
