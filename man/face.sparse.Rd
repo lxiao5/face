@@ -96,7 +96,7 @@ If \code{center} is TRUE, then a population mean will be calculated and is smoot
 univariate P-spline smoothing:\code{pspline} (Eilers and Marx, 1996). This univariate
 smoothing uses leave-one-subject-out cross validation to select the smoothing parameter.
 
-If \code{knots.option} is "equally-spaced", then the differencing penalty in Eilers and Marx (1996)
+If \code{knots.option} is "equally-spaced", then the differencing penalty in Eilers and Marx (2003)
 is used; if \code{knots.option} is "quantile" then the integrated squared second order derivative
                                                 penalty in Wood (2016) is used.
                                                 
@@ -123,7 +123,7 @@ is not NULL, then predicted scores will be calculated.}
 }
 \references{
 Luo Xiao, Cai Li, William Checkley and Ciprian Crainiceanu, Fast covariance estimation
-for sparse functional data, manuscript.
+for sparse functional data, available at \url{https://arxiv.org/abs/1603.05758}.
 
 Paul Eilers and Brian  Marx, Multivariate calibration with temperature
 interaction using two-dimensional penalized signal regression,
@@ -131,6 +131,9 @@ Chemometrics and Intelligent Laboratory Systems 66 (2003), 159-174.
 
 Paul Eilers and Brian Marx, Flexible smoothing with B-splines and penalties,
 Statist. Sci., 11, 89-121, 1996.
+ 
+Simon N. Wood, P-splines with derivative based penalties and tensor product 
+  smoothing of unevenly distributed data, Stat. Comput., doi:10.1007/s11222-016-9666-x.
 }
 \author{
 Luo Xiao <lxiao5@ncsu.edu> and Cai Li <cli9@ncsu.edu>
