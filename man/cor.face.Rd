@@ -27,8 +27,9 @@ cor.face(object,argvals.new,option="raw")
 }
 
 \references{
-Luo Xiao, Cai Li, Will Checkley and Ciprian Crainiceanu, Fast covariance estimation
-for sparse functional data, manuscript.
+Luo Xiao, Cai Li, William Checkley and Ciprian Crainiceanu, Fast covariance estimation
+for sparse functional data, available at \url{https://arxiv.org/abs/1603.05758}.
+
 }
 \author{
 Luo Xiao <lxiao5@ncsu.edu>
