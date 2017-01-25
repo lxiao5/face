@@ -287,7 +287,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
       
       ## predict scores
      if(calculate.scores==TRUE){ 
-       temp = matrix(t(eigenfunctions),nrow=npc)%*%(as.matrix(Bnew)%*%ui)/length(tnew)
+       temp = matrix(t(eigenfunctions),nrow=npc)%*%(as.matrix(Bnew)%*%ui)/sum(eigenfunctions[,1]^2)
        temp = as.matrix(temp)
        scores$scores[i,1:npc] = temp[,1]
      }
