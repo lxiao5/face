@@ -85,7 +85,7 @@ predict.face.sparse <- function(object,newdata,...){
       }
       ## predict scores
       if(object$calculate.scores==TRUE){ 
-        temp = matrix(t(object$eigenfunctions),nrow=npc)%*%(as.matrix(Bnew)%*%ui)
+        temp = matrix(t(object$eigenfunctions),nrow=npc)%*%(as.matrix(Bnew)%*%ui)/sum(object$eigenfunctions[,1]^2)
         temp = as.matrix(temp)
         scores$scores[i,1:npc] = temp[,1]
       }
