@@ -25,5 +25,6 @@ select.knots <- function(t,knots=10,p=3,option="equally-spaced"){
   knots_left <- 2*knots[1]-knots[p:1+1]
   knots_right <- 2*knots[K] - knots[K-(1:p)]
   
-  return(c(knots_left,knots,knots_right))
+  if(p>0) return(c(knots_left,knots,knots_right))
+  if(p==0) return(knots)
 }
