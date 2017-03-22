@@ -21,7 +21,7 @@ if(knots.option == "quantile"){
   bs = "bs"
 }
 
-s.object = s(x=x, bs=bs, k=K+3, sp=NULL)
+s.object = s(x=x, bs=bs, k=K+p,m=c(p,2), sp=NULL)
 object  = smooth.construct(s.object,data = data.frame(x=x),knots=list(x=knots))
 P =  object$S[[1]]
 if(knots.option == "quantile") P = P / max(abs(P))*10 # rescaling
