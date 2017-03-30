@@ -11,7 +11,7 @@ Fast Covariance Estimation for Sparse Functional Data
 Package: \tab face\cr
 Type: \tab Package\cr
 Version: \tab 0.1-3\cr
-Date: \tab 2017-01-02\cr
+Date: \tab 2017-03-30\cr
 License: GPL-3
 }
 }
