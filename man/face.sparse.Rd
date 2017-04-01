@@ -123,7 +123,7 @@ is not NULL, then predicted scores will be calculated.}
 }
 \references{
 Luo Xiao, Cai Li, William Checkley and Ciprian Crainiceanu, Fast covariance estimation
-for sparse functional data, available at \url{https://arxiv.org/abs/1603.05758}.
+for sparse functional data, \emph{Statistics and Computing},2017, to appear.
 
 Paul Eilers and Brian  Marx, Multivariate calibration with temperature
 interaction using two-dimensional penalized signal regression,
