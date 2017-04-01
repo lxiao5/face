@@ -71,7 +71,7 @@ Paul Eilers and Brian Marx, Flexible smoothing with B-splines and penalties,
 Statist. Sci., 11, 89-121, 1996.
 
 Luo Xiao, Cai Li, William Checkley and Ciprian Crainiceanu, Fast covariance estimation
-for sparse functional data, available at \url{https://arxiv.org/abs/1603.05758}.
+for sparse functional data, \emph{Statistics and Computing},2017, to appear.
 }
 \author{
 Luo Xiao <lxiao5@ncsu.edu>
