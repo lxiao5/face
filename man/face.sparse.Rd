@@ -123,7 +123,7 @@ is not NULL, then predicted scores will be calculated.}
 }
 \references{
 Luo Xiao, Cai Li, William Checkley and Ciprian Crainiceanu, Fast covariance estimation
-for sparse functional data, \emph{Statistics and Computing},2017, DOI: 10.1007/s11222-017-9744-8.
+for sparse functional data, \emph{Statistics and Computing}, 2017, DOI: 10.1007/s11222-017-9744-8.
 
 Paul Eilers and Brian  Marx, Multivariate calibration with temperature
 interaction using two-dimensional penalized signal regression,
@@ -133,7 +133,7 @@ Paul Eilers and Brian Marx, Flexible smoothing with B-splines and penalties,
 Statist. Sci., 11, 89-121, 1996.
  
 Simon N. Wood, P-splines with derivative based penalties and tensor product 
-  smoothing of unevenly distributed data, Stat. Comput., doi:10.1007/s11222-016-9666-x.
+  smoothing of unevenly distributed data, Stat. Comput., DOI: 10.1007/s11222-016-9666-x.
 }
 \author{
 Luo Xiao <lxiao5@ncsu.edu> and Cai Li <cli9@ncsu.edu>
