@@ -22,7 +22,7 @@ Maintainer: Luo Xiao <lxiao5@ncsu.edu>
 }
 \references{
 Luo Xiao, Cai Li, William Checkley and Ciprian Crainiceanu, Fast covariance estimation
-for sparse functional data, \emph{Statistics and Computing},2017, DOI: 10.1007/s11222-017-9744-8.
+for sparse functional data, Stat. Comput., DOI: 10.1007/s11222-017-9744-8.
 }
 \keyword{ package }
 
