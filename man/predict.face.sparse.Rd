@@ -41,7 +41,7 @@ then predicted scores will be calculated.}
 
 \references{
 Luo Xiao, Cai Li, William Checkley and Ciprian Crainiceanu, Fast covariance estimation
-for sparse functional data, Stat. Comput., DOI: 10.1007/s11222-017-9744-8.
+for sparse functional data, Stat. Comput., doi:10.1007/s11222-017-9744-8.
 }
 \author{
 Luo Xiao <lxiao5@ncsu.edu>
