@@ -14,7 +14,7 @@ face.sparse(data, newdata = NULL,
              p = 3, m = 2, lambda = NULL, lambda_mean = NULL,
              search.length = 14, 
              lower = -3, upper = 10, lower2 = -3, upper2 = 5,
-             calculate.scores = FALSE,pve=0.99)
+             calculate.scores = FALSE,pve=0.99,two_step=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -76,6 +76,9 @@ if TRUE, scores will be calculated.
 }
 \item{pve}{
 Defaults 0.99. To select the number of eigenvalues by percentage of variance.
+}
+\item{two_step}{
+if TRUE, a two-step estimation procedure will be applied.
 }
 }
 \details{
