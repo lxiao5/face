@@ -7,7 +7,7 @@ face.sparse <- function(data, newdata = NULL,
                         calculate.scores=FALSE,pve=0.99,two_step=FALSE){
 
   if(!two_step){
-    fit <- face.sparse.inner(data = data, newdata=NULL, W = NULL,
+    fit <- face.sparse.inner(data = data, newdata=newdata, W = NULL,
                              argvals.new = argvals.new,
                              center=center,
                              knots=knots,
