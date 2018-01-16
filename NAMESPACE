@@ -1,5 +1,5 @@
 S3method(predict,face.sparse)
-S3method(predict,pspline)
+S3method(predict,pspline.face)
 export(face.sparse)
 export(pspline)
 export(select.knots)
