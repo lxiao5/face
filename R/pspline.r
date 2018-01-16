@@ -1,5 +1,5 @@
 pspline <- function(data,argvals.new= NULL,knots=35,
-                        knots.option="equally-spaced",
+                        # knots.option="equally-spaced",
                         p=3,m=2,lambda=NULL,
                         search.length = 100,
                         lower=-20,upper=20){
@@ -34,6 +34,7 @@ pspline <- function(data,argvals.new= NULL,knots=35,
   m.p <- m
 
   ######### precalculation for smoothing ############
+  knots.option="equally-spaced"
   knots <- construct.knots(t,knots,knots.option,p)
   
   
