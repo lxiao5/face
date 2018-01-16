@@ -8,7 +8,6 @@ Univariate P-spline smoothing with the smoothing parameter selected by leave-one
 }
 \usage{
 pspline(data, argvals.new = NULL, knots = 35,
-            knots.option="equally-spaced",
             p = 3, m = 2, lambda = NULL,
             search.length = 100,
             lower = -20, upper = 20)
@@ -28,11 +27,7 @@ a vector of observations times for prediction; if NULL, then the same as \code{d
   \item{knots}{
 a vector of interior knots or the number of knots for B-spline basis functions to be used; defaults to 35.
 }
-\item{knots.option}{
-if \code{knots} specifies the number of interior knots, then \code{knots.option} will be used. Default
-"equally-spaced", then equally-spaced knots in the range of observed time points will be selected; alternatively,
-"quantile": quantiles of the observed time points will be selected.
-}
+
 
   \item{p}{
 the degrees of B-splines; defaults to 3.
