@@ -96,7 +96,7 @@ pspline <- function(data,argvals.new= NULL,knots=35,
   res <- list(fitted.values = as.vector(B%*%theta), B = B,theta=theta,s = s,
               knots=knots,p=p,m=m,
               lambda=lambda,argvals.new = tnew, mu.new = as.vector(Bnew%*%theta))
-  class(res) <- "pspline"
+  class(res) <- "pspline.face"
   return(res)
   
 }
