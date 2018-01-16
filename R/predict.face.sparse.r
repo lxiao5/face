@@ -36,7 +36,7 @@ predict.face.sparse <- function(object,newdata,...){
   var.error.pred <- rep(max(sigma2,0.000001),nrow(newdata))
   cov.pred <-  matrix(0,length(mu.pred),length(mu.pred))
     
-  if(center) {mu.pred <- predict.pspline(fit_mean,newdata$argvals) }
+  if(center) {mu.pred <- predict.pspline.face(fit_mean,newdata$argvals) }
   #if(!const.var.error){
   #  var.error.pred <- predict.pspline(fit_var_error,newdata$argvals)
   #  var.error.pred <-  sapply(var.error.pred,function(x) max(x,0))### added Sept 8, 2015 by Luo
