@@ -1,5 +1,5 @@
-\name{predict.pspline}
-\alias{predict.pspline}
+\name{predict.pspline.face}
+\alias{predict.pspline.face}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Mean prediction from a P-spline smoothing fit
@@ -8,7 +8,7 @@ Mean prediction from a P-spline smoothing fit
 Predict mean values based on a fit from "pspline".
 }
 \usage{
-\method{predict}{pspline}(object, argvals.new,\dots)
+\method{predict}{pspline.face}(object, argvals.new,\dots)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
