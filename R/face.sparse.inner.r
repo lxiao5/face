@@ -49,7 +49,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   r <- y
   mu.new <- rep(0,length(tnew))
   if(center){
-    fit_mean <- pspline(data,argvals.new=tnew,knots=knots.initial,knots.option=knots.option,lambda=lambda_mean)
+    fit_mean <- pspline(data,argvals.new=tnew,knots=knots.initial,lambda=lambda_mean)
     mu.new <- fit_mean$mu.new
     r <- y - fit_mean$fitted.values 
   }
