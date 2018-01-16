@@ -235,7 +235,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   mu.pred <- rep(0,length(newdata$argvals))
   var.error.pred <- rep(sigma2,length(newdata$argvals))
   if(center){
-    mu.pred <- predict.pspline(fit_mean,newdata$argvals)
+    mu.pred <- predict.pspline.face(fit_mean,newdata$argvals)
   }
   
   subj.pred = newdata$subj
