@@ -251,7 +251,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
 
   for(i in 1:length(subj_unique.pred)){
     sel.pred = which(subj.pred==subj_unique.pred[i])
-    lengthi = length(sel.pred)
+    # lengthi = length(sel.pred)
     
     pred.points <- newdata$argvals[sel.pred]
     mu.predi <- mu.pred[sel.pred]
