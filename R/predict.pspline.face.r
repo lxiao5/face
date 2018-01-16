@@ -1,7 +1,7 @@
-predict.pspline <- function(object,argvals.new,...){
+predict.pspline.face <- function(object,argvals.new,...){
   
   #require(splines)
-  stopifnot(class(object)=="pspline")
+  stopifnot(class(object)=="pspline.face")
   
   knots <- object$knots
   p <- object$p
