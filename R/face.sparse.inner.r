@@ -102,7 +102,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   BG = B%*%G # sparse
   detWde <- crossprod(delta,Wdelta) # detWde = sum(delta)
   GtBtWdelta <- crossprod(BG,Wdelta)
-  XtWX <- rBind(cBind(GtBtWBG,GtBtWdelta), cBind(t(GtBtWdelta),detWde))
+  XtWX <- rbind(cbind(GtBtWBG,GtBtWdelta), cbind(t(GtBtWdelta),detWde))
   
   eSig = eigen(XtWX,symmetric=TRUE)
   V = eSig$vectors
@@ -119,7 +119,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   U = Esig$vectors
   s = Esig$values
   A0 <- Sigi_sqrt%*%U
-  X <- cBind(BG,delta)
+  X <- cbind(BG,delta)
   A = as.matrix(X%*%A0) # F=XA dense
   
   AtA = crossprod(A) # diff
@@ -205,15 +205,23 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   ####step 4: calculate estimated covariance function
   #########################
   Bnew = spline.des(knots=knots, x=tnew, ord = p+1,outer.ok = TRUE,sparse=TRUE)$design
+  Gmat <- crossprod(Bnew) / nrow(Bnew)
+  eig_G <- eigen(Gmat, symmetric = T)
+  G_half <- eig_G$vectors %*% diag(sqrt(eig_G$values)) %*% t(eig_G$vectors)
+  G_invhalf <- eig_G$vectors %*% diag(1/sqrt(eig_G$values)) %*% t(eig_G$vectors)
+  
   Chat.new = as.matrix(tcrossprod(Bnew%*%Matrix(Theta),Bnew)) 
   Chat.diag.new = as.vector(diag(Chat.new))  
   Cor.new = diag(1/sqrt(Chat.diag.new))%*%Chat.new%*%diag(1/sqrt(Chat.diag.new))
-  Eigen.new = eigen(Chat.new,symmetric=TRUE)
+  
+  Eigen.new = eigen(as.matrix(G_half%*%Matrix(Theta)%*%G_half),symmetric=TRUE)
+  # Eigen.new = eigen(Chat.new,symmetric=TRUE)
   npc = which.max(cumsum(Eigen$values)/sum(Eigen$values)>pve)[1] #determine number of PCs
-  eigenfunctions = matrix(Eigen.new$vectors[,1:min(npc,length(tnew))],ncol=min(npc,length(tnew)))
+  
+  eigenfunctions = matrix(Bnew%*%G_invhalf%*%Eigen.new$vectors[,1:min(npc,length(tnew))],ncol=min(npc,length(tnew)))
   eigenvalues = Eigen.new$values[1:min(npc,length(tnew))]
-  eigenfunctions = eigenfunctions*sqrt(length(tnew))/sqrt(max(tnew)-min(tnew))
-  eigenvalues = eigenvalues/length(tnew)*(max(tnew)-min(tnew))
+  # eigenfunctions = eigenfunctions*sqrt(length(tnew))/sqrt(max(tnew)-min(tnew))
+  # eigenvalues = eigenvalues/length(tnew)*(max(tnew)-min(tnew))
 
 
   #########################
@@ -316,7 +324,8 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
               se.pred = se.pred,
               fit_mean = fit_mean, lambda_mean=fit_mean$lambda,
               lambda=lambda,Gcv=Gcv,Lambda=Lambda,knots=knots,knots.option=knots.option,s=s,npc=npc, p = p, m=m,
-              center=center,pve=pve,sigma2=sigma2, r = r, DtD = DtD)
+              center=center,pve=pve,sigma2=sigma2, r = r, DtD = DtD,
+              U = Eigen.new$vectors[,1:npc],G_invhalf = G_invhalf)
  
   class(res) <- "face.sparse"
   return(res)
