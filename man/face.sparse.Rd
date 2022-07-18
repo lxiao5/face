@@ -114,8 +114,7 @@ missing data in the data matrix.
 \code{argvals.new}}
 \item{eigenfunctions, eigenvalues}{Estimated eigenfunctions (scaled eigenvector) and eigenvalues at \code{argvals.new}}
 \item{mu.hat,var.error.hat}{Estimated objects at  \code{data$argvals}}
-\item{calculate.scores,scores}{if \code{calculate.scores} is TRUE (default to FALSE) and \code{newdata}
-is not NULL, then predicted scores will be calculated.}
+\item{calculate.scores, rand_eff}{if \code{calculate.scores} is TRUE (default to FALSE), then predicted scores \code{rand_eff$scores} will be calculated.}
 \item{\dots}{\dots}
 }
 \references{
@@ -149,9 +148,9 @@ Luo Xiao <lxiao5@ncsu.edu> and Cai Li <cli9@ncsu.edu>
 require(refund)
 data(cd4)
 n <- nrow(cd4)
-T <- ncol(cd4)
+Tt <- ncol(cd4)
 
-id <- rep(1:n,each=T)
+id <- rep(1:n,each=Tt)
 t <- rep(-18:42,times=n)
 y <- as.vector(t(cd4))
 sel <- which(is.na(y))
@@ -163,6 +162,10 @@ argvals = t[-sel],
 subj = id[-sel])
 data <- data[data$y>4.5,]
 fit_face <- face.sparse(data,argvals.new=(-20:40))
+
+## set calculate.scores to TRUE if want to get scores
+fit_face <- face.sparse(data,argvals.new=(-20:40),calculate.scores=TRUE)
+scores <- fit_face$rand_eff$scores
 
 data.h <- data
 tnew <- fit_face$argvals.new

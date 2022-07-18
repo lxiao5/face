@@ -34,8 +34,8 @@ no observation is available, just make the corresponding \code{data$y} as NA.
 \item{newdata}{Input}
 \item{y.pred,mu.pred,Chat.pred, Chat.diag.pred, var.error.pred}{Predicted/estimated objects at
 the observation time points in \code{newdata}}
-\item{scores}{if \code{calculate.scores} in \code{object} is TRUE (typically FALSE),
-then predicted scores will be calculated.}
+\item{rand_eff}{if \code{calculate.scores} in \code{object} is TRUE (typically FALSE),
+then predicted scores \code{rand_eff$scores} will be calculated.}
 \item{\dots}{\dots}
 }
 
