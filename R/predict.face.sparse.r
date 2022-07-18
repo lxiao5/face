@@ -14,7 +14,7 @@
 predict.face.sparse <- function(object,newdata,...){
   
   ## check inputs
-  if(class(object)!="face.sparse") stop("'fit' has to be a face.sparse object")
+  if(!inherits(object, "face.sparse")) stop("'fit' has to be a face.sparse object")
   check.data(newdata,type="predict") 
 
   subj.pred = newdata$subj

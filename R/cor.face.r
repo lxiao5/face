@@ -14,7 +14,7 @@ cor.face <- function(object,argvals.new,option="raw"){
   ##
   
   ## check inputs
-  if(class(object)!="face.sparse") stop("'fit' has to be a face_sparse object")
+  if(!inherits(object, "face.sparse")) stop("'fit' has to be a face_sparse object")
   if(is.null(argvals.new)) stop("'argvals.new' needs to be specified")
   if(length(argvals.new)<2) stop("'argvals.new' needs to contain at least two time points")
   if(!is.numeric(argvals.new[1])) stop("'argvals.new' need to be numeric")
