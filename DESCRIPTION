@@ -1,6 +1,6 @@
 Package: face
 Title: Fast Covariance Estimation for Sparse Functional Data
-Version: 0.1-7
+Version: 0.1-8
 Author: Luo Xiao [aut], Cai Li [aut,cre], William Checkley [aut], Ciprian Crainiceanu [aut]
 Maintainer: Cai Li <cai.li.stats@gmail.com>
 Description: We implement the Fast Covariance Estimation for 

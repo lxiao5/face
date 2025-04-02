@@ -44,7 +44,7 @@ Luo Xiao, Cai Li, William Checkley and Ciprian Crainiceanu, Fast covariance esti
 for sparse functional data, Stat. Comput., \doi{10.1007/s11222-017-9744-8}.
 }
 \author{
-Luo Xiao <lxiao5@ncsu.edu>
+Luo Xiao <lxiao5@ncsu.edu> and Cai Li <cli9@ncsu.edu>
 }
 
 
