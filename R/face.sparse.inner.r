@@ -252,7 +252,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
   subj.pred = newdata$subj
   subj_unique.pred = unique(subj.pred)
   y.pred = newdata$y
-  Chat.diag.pred = 0*y.pred
+  Chat.diag.pred = rep(0, sum(!is.na(newdata$y)))
   se.pred = 0*y.pred
  
   scores = list(subj=subj_unique.pred,
@@ -279,7 +279,7 @@ face.sparse.inner <- function(data, newdata = NULL, W = NULL,
       B3i.pred = spline.des(knots=knots, x=pred.points, ord = p+1,outer.ok = TRUE,sparse=TRUE)$design
       B3i = spline.des(knots=knots, x=obs.points, ord = p+1,outer.ok = TRUE,sparse=TRUE)$design
       Chati = tcrossprod(B3i%*%Theta,B3i)
-      Chat.diag.pred[sel.pred] = diag(Chati)
+      Chat.diag.pred[sel.pred[sel.pred.obs]] = diag(Chati)
       if(length(sel.pred.obs)==1) Ri = var.error.predi[sel.pred.obs]
       if(length(sel.pred.obs)>1) Ri = diag(var.error.predi[sel.pred.obs])
       Vi.inv = as.matrix(solve(Chati + Ri))
