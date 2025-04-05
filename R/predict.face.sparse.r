@@ -35,7 +35,7 @@ predict.face.sparse <- function(object,newdata,...){
   mu.pred <- rep(0,nrow(newdata))
   var.error.pred <- rep(max(sigma2,0.000001),nrow(newdata))
   # cov.pred <-  matrix(0,length(mu.pred),length(mu.pred))
-  se.pred <- rep(0,nrow(newdata))
+  se.pred <- rep(0, nrow(newdata))
     
   if(center) {mu.pred <- predict.pspline.face(fit_mean,newdata$argvals) }
   #if(!const.var.error){
@@ -82,7 +82,7 @@ predict.face.sparse <- function(object,newdata,...){
         se.pred[sel.pred] = sqrt(diag(Vi.pred - temp%*%Vi.inv%*%t(temp)))
       }
       if(length(sel.pred.obs) ==1){
-        se.pred[sel.preds] = sqrt(Vi.pred[1,1] - Vi.inv[1,1]*temp%*%t(temp))
+        se.pred[sel.pred] = sqrt(Vi.pred[1,1] - Vi.inv[1,1]*temp%*%t(temp))
       }
       ## predict scores
       if(object$calculate.scores==TRUE){ 
