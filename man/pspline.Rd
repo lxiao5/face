@@ -73,7 +73,7 @@ Luo Xiao <lxiao5@ncsu.edu>
 }
 
 \seealso{
- \code{\link{gam}} in \code{\link{mgcv}}.
+ \code{\link[mgcv:gam]{gam}} in \pkg{mgcv}.
 }
 \examples{
 \dontrun{

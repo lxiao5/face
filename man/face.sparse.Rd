@@ -136,7 +136,7 @@ Luo Xiao <lxiao5@ncsu.edu> and Cai Li <cli9@ncsu.edu>
 }
 
 \seealso{
-\code{fpca.face} and \code{fpca.sc} in \code{refund}
+\code{\link[refund:fpca.face]{fpca.face}} and \code{\link[refund:fpca.sc]{fpca.sc}} in \pkg{refund}
 }
 \examples{
 
